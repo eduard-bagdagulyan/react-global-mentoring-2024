@@ -1,6 +1,6 @@
 import './App.css';
-import {Counter} from "./Counter";
-import {Search} from "./Search";
+import {Counter} from "./components/Counter";
+import {Search} from "./components/Search";
 import {GenreSelect} from "./components/GenreSelect";
 
 function App() {
