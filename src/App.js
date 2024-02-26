@@ -6,7 +6,7 @@ import {GenreSelect} from "./components/GenreSelect";
 function App() {
     return (
         <>
-            <Counter value={0}/>
+            <Counter initialValue={0}/>
             <hr/>
             <Search placeholderValue={'Search'}/>
             <hr/>
