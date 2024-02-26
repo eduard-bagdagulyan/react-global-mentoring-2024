@@ -8,7 +8,10 @@ function App() {
         <>
             <Counter initialValue={0}/>
             <hr/>
-            <Search placeholderValue={'Search'}/>
+            <Search initialQuery={'Search'} onSearch={(event) => {
+                event.preventDefault();
+                console.log('Search:', event.target[0].value);
+            }}/>
             <hr/>
             <GenreSelect genres={['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Thriller']}
                          selectedGenre={'Action'} onGenreSelectCb={(e) => console.log(e.target.value)}/>
