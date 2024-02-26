@@ -14,7 +14,7 @@ function App() {
             }}/>
             <hr/>
             <GenreSelect genres={['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Thriller']}
-                         selectedGenre={'Action'} onGenreSelectCb={(e) => console.log(e.target.value)}/>
+                         selectedGenre={'Action'} onSelect={console.log}/>
         </>
     );
 }
