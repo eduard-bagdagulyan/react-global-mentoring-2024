@@ -12,8 +12,20 @@ function App() {
             <hr />
             <Search initialQuery={'Search'} onSearch={console.log} />
             <hr />
-            <GenreSelect genres={['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Thriller']}
-                         selectedGenre={selectedGenre} onSelect={setSelectedGenre} />
+            <GenreSelect
+                genres={[
+                    'Action',
+                    'Adventure',
+                    'Comedy',
+                    'Drama',
+                    'Fantasy',
+                    'Horror',
+                    'Mystery',
+                    'Thriller'
+                ]}
+                selectedGenre={selectedGenre}
+                onSelect={setSelectedGenre}
+            />
         </>
     )
 }
