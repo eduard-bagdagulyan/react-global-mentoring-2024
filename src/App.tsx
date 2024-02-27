@@ -1,33 +1,21 @@
 import { useState } from 'react'
-import './App.css'
+import { Counter } from './components/Counter.ts'
+import { Search } from './components/Search.tsx'
+import { GenreSelect } from './components/GenreSelect.tsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [selectedGenre, setSelectedGenre] = useState<string>('Action')
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <>
+            <Counter initialValue={0} />
+            <hr />
+            <Search initialQuery={'Search'} onSearch={console.log} />
+            <hr />
+            <GenreSelect genres={['Action', 'Adventure', 'Comedy', 'Drama', 'Fantasy', 'Horror', 'Mystery', 'Thriller']}
+                         selectedGenre={selectedGenre} onSelect={setSelectedGenre} />
+        </>
+    )
 }
 
 export default App
