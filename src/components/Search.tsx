@@ -5,10 +5,8 @@ type SearchProps = { initialQuery: string; onSearch: (query: string) => void }
 export function Search({ initialQuery, onSearch }: SearchProps) {
     function handleSearch(event: FormEvent<HTMLFormElement>) {
         event.preventDefault()
-        const target = event.target as typeof event.target & {
-            searchInput: { value: string }
-        }
-        onSearch(target.searchInput.value)
+        const data = new FormData(event.currentTarget)
+        onSearch(data.get('searchInput') as string)
     }
 
     return (
