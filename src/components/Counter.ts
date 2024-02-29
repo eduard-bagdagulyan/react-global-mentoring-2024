@@ -1,9 +1,9 @@
-import React, { createElement } from 'react'
+import { createElement, Component } from 'react'
 
 type CounterProps = { initialValue: number };
 type CounterState = { value: number };
 
-export class Counter extends React.Component<CounterProps, CounterState> {
+export class Counter extends Component<CounterProps, CounterState> {
     constructor(props: { initialValue: number }) {
         super(props)
         this.state = { value: this.props.initialValue }
