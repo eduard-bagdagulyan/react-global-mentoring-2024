@@ -3,17 +3,23 @@ import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
 describe('Search', () => {
-    const user = userEvent.setup()
-    const initialValue = 'initial value'
-    const newValue = 'new value'
-    const onSearch = jest.fn()
+    function setup() {
+        return {
+            user: userEvent.setup(),
+            onSearch: jest.fn(),
+            initialValue: 'initial value',
+            newValue: 'new value',
+        }
+    }
 
     it('renders with initial value', () => {
+        const { initialValue, onSearch } = setup()
         render(<Search initialQuery={initialValue} onSearch={onSearch} />)
         expect(screen.getByDisplayValue(initialValue)).toBeInTheDocument()
     })
 
     it('calls the onSearch prop with the input value when the form is submitted', async () => {
+        const { user, initialValue, newValue, onSearch } = setup()
         render(<Search initialQuery={initialValue} onSearch={onSearch} />)
         const input = screen.getByDisplayValue(initialValue)
         const submitButton = screen.getByRole('button', { name: /search/i })
@@ -26,6 +32,7 @@ describe('Search', () => {
     })
 
     it('calls the onSearch prop with the input value when the Enter key is pressed', async () => {
+        const { user, initialValue, newValue, onSearch } = setup()
         render(<Search initialQuery={initialValue} onSearch={onSearch} />)
         const input = screen.getByDisplayValue(initialValue)
         await user.clear(input)
