@@ -1,7 +1,7 @@
 import { createElement, Component } from 'react'
 
-type CounterProps = { initialValue: number };
-type CounterState = { value: number };
+type CounterProps = { initialValue: number }
+type CounterState = { value: number }
 
 export class Counter extends Component<CounterProps, CounterState> {
     constructor(props: { initialValue: number }) {
@@ -12,11 +12,11 @@ export class Counter extends Component<CounterProps, CounterState> {
     }
 
     increase() {
-        this.setState((state) => ({ value: state.value + 1 }))
+        this.setState(state => ({ value: state.value + 1 }))
     }
 
     decrease() {
-        this.setState((state) => ({ value: state.value - 1 }))
+        this.setState(state => ({ value: state.value - 1 }))
     }
 
     render() {
@@ -26,7 +26,7 @@ export class Counter extends Component<CounterProps, CounterState> {
             createElement('h1', null, 'Counter'),
             createElement('p', null, this.state.value),
             createElement('button', { onClick: this.increase }, '+'),
-            createElement('button', { onClick: this.decrease }, '-')
+            createElement('button', { onClick: this.decrease }, '-'),
         )
     }
 }
