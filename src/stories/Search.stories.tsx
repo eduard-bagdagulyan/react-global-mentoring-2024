@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { Search } from '../components/Search.tsx'
+import { Search } from '../components/Search/Search.tsx'
 
 const meta: Meta<typeof Search> = {
     title: 'Search',
@@ -20,6 +20,6 @@ type Story = StoryObj<typeof Search>
 
 export const Default: Story = {
     args: {
-        initialQuery: 'Search Query',
+        initialQuery: 'What do you want to watch?',
     },
 }

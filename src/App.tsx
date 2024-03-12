@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Counter } from './components/Counter.ts'
-import { Search } from './components/Search.tsx'
+import { Search } from './components/Search/Search.tsx'
 import { GenreSelect } from './components/GenreSelect.tsx'
+import './global.css'
 
 function App() {
     const [selectedGenre, setSelectedGenre] = useState<string>('Action')
@@ -21,7 +22,7 @@ function App() {
                     'Fantasy',
                     'Horror',
                     'Mystery',
-                    'Thriller'
+                    'Thriller',
                 ]}
                 selectedGenre={selectedGenre}
                 onSelect={setSelectedGenre}

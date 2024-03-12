@@ -1,4 +1,4 @@
-import { Search } from '../components/Search.tsx'
+import { Search } from '../components/Search/Search.tsx'
 import { render, screen } from '@testing-library/react'
 import { userEvent } from '@testing-library/user-event'
 
