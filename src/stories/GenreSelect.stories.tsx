@@ -23,8 +23,5 @@ export const Default: Story = {
     args: {
         genres: ['Action', 'Adventure', 'Comedy', 'Drama'],
         selectedGenre: 'Action',
-        onSelect: (genre: string) => {
-            console.log('Selected:', genre)
-        },
     },
 }

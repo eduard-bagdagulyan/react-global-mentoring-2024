@@ -21,8 +21,5 @@ type Story = StoryObj<typeof Search>
 export const Default: Story = {
     args: {
         initialQuery: 'Search Query',
-        onSearch: (query: string) => {
-            console.log('Searching for:', query)
-        },
     },
 }

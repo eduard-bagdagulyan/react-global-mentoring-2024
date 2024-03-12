@@ -13,6 +13,7 @@ const meta: Meta<typeof MovieTile> = {
         title: { control: 'text', description: 'Title' },
         year: { control: 'number', description: 'Year' },
         genres: { control: 'array', description: 'Genres' },
+        cb: { action: 'clicked', description: 'Click handler' },
     },
 }
 

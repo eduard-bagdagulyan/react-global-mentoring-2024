@@ -21,13 +21,11 @@ type Story = StoryObj<typeof SortControl>
 export const ReleaseDateSelected: Story = {
     args: {
         currentSelection: 'Release Date',
-        onSortChange: () => {},
     },
 }
 
 export const TitleSelected: Story = {
     args: {
         currentSelection: 'Title',
-        onSortChange: () => {},
     },
 }
