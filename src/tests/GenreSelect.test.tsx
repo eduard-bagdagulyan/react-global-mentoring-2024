@@ -1,4 +1,4 @@
-import { GenreSelect } from '../components/GenreSelect'
+import { GenreSelect } from '../components/GenreSelect/GenreSelect.tsx'
 import { render, screen } from '@testing-library/react'
 
 describe('GenreSelect', () => {

@@ -1,3 +1,5 @@
+import './GenreSelect.css'
+
 type GenreSelectProps = {
     genres: string[]
     selectedGenre: string
@@ -10,16 +12,12 @@ export function GenreSelect({
     onSelect,
 }: GenreSelectProps) {
     return (
-        <div>
-            <h1>Genre Select</h1>
+        <div className={'genre-select'}>
             {genres.map(genre => (
                 <button
+                    className={`genre-select-button ${selectedGenre === genre ? 'selected-button' : ''}`}
                     key={genre}
                     onClick={() => onSelect(genre)}
-                    style={{
-                        backgroundColor:
-                            genre === selectedGenre ? 'lightblue' : 'white',
-                    }}
                 >
                     {genre}
                 </button>

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Counter } from './components/Counter.ts'
 import { Search } from './components/Search/Search.tsx'
-import { GenreSelect } from './components/GenreSelect.tsx'
+import { GenreSelect } from './components/GenreSelect/GenreSelect.tsx'
 import './global.css'
 
 function App() {

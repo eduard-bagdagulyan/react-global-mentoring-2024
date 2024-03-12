@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { GenreSelect } from '../components/GenreSelect.tsx'
+import { GenreSelect } from '../components/GenreSelect/GenreSelect.tsx'
 
 const meta: Meta<typeof GenreSelect> = {
     title: 'Genre Select',
@@ -21,7 +21,7 @@ type Story = StoryObj<typeof GenreSelect>
 
 export const Default: Story = {
     args: {
-        genres: ['Action', 'Adventure', 'Comedy', 'Drama'],
-        selectedGenre: 'Action',
+        genres: ['ALL', 'DOCUMENTARY', 'COMEDY', 'HORROR', 'CRIME'],
+        selectedGenre: 'ALL',
     },
 }
