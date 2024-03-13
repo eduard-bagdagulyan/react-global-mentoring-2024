@@ -1,34 +1,21 @@
-import SortControl from '../components/SortControl/SortControl.tsx'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react';
+import SortControl from '../components/SortControl/SortControl';
 
-describe('Counter', () => {
-    it('renders with initial selection', () => {
-        render(
-            <SortControl currentSelection="Title" onSortChange={jest.fn()} />,
-        )
-        expect(screen.getByDisplayValue('Title')).toBeInTheDocument()
-    })
+describe('SortControl', () => {
+    it('renders without crashing', () => {
+        const { getByText } = render(<SortControl currentSelection="Release Date" onSortChange={() => {}} />);
+        expect(getByText('SORT BY')).toBeInTheDocument();
+    });
 
-    it('changes selection when a different option is chosen', () => {
-        render(
-            <SortControl currentSelection="Title" onSortChange={jest.fn()} />,
-        )
-        const element = screen.getByLabelText('Sort by')
-        fireEvent.change(element, { target: { value: 'Release Date' } })
-        expect(element).toHaveValue('Release Date')
-    })
+    it('renders the correct default selection', () => {
+        const { getByDisplayValue } = render(<SortControl currentSelection="Release Date" onSortChange={() => {}} />);
+        expect(getByDisplayValue('RELEASE DATE')).toBeInTheDocument();
+    });
 
-    it('calls the onSortChange callback with the new selection when changed', () => {
-        const mockCallback = jest.fn()
-        const { getByLabelText } = render(
-            <SortControl
-                currentSelection="Title"
-                onSortChange={mockCallback}
-            />,
-        )
-        fireEvent.change(getByLabelText('Sort by'), {
-            target: { value: 'Release Date' },
-        })
-        expect(mockCallback).toHaveBeenCalledWith('Release Date')
-    })
-})
+    it('calls onSortChange when a new option is selected', () => {
+        const onSortChange = jest.fn();
+        const { getByLabelText } = render(<SortControl currentSelection="Release Date" onSortChange={onSortChange} />);
+        fireEvent.change(getByLabelText('SORT BY'), { target: { value: 'Title' } });
+        expect(onSortChange).toHaveBeenCalledWith('Title');
+    });
+});

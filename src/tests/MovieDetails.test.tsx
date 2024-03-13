@@ -20,7 +20,7 @@ describe('MovieDetails', () => {
         expect(screen.getByText('5')).toBeInTheDocument()
         expect(screen.getByText('Action, Adventure')).toBeInTheDocument()
         expect(screen.getByText('2022')).toBeInTheDocument()
-        expect(screen.getByText('120')).toBeInTheDocument()
+        expect(screen.getByText('2h 0min')).toBeInTheDocument()
         expect(screen.getByText('Test description')).toBeInTheDocument()
     })
 })

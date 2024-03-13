@@ -34,7 +34,7 @@ describe('GenreSelect', () => {
             />,
         )
         const selected = screen.getByText(selectedGenre)
-        expect(selected).toHaveStyle('background-color: lightblue')
+        expect(selected).toHaveClass('selected-button')
     })
 
     // Test that after a click event on a genre button component calls "onChange" callback and passes correct genre in arguments

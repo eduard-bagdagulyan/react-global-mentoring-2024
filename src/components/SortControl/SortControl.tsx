@@ -14,8 +14,9 @@ const SortControl: React.FC<SortControlProps> = ({
 
     return (
         <div className={'sort-control'}>
-            <label className={'sort-label'}>SORT BY</label>
+            <label className={'sort-label'} htmlFor={'sort-select'}>SORT BY</label>
             <select
+                id="sort-select"
                 className={'sort-select'}
                 defaultValue={currentSelection}
                 onChange={e => onSortChange(e.target.value)}
