@@ -1,4 +1,4 @@
-import { MovieTile } from '../components/MovieTile.tsx'
+import { MovieTile } from '../components/MovieTile/MovieTile.tsx'
 import { render, screen } from '@testing-library/react'
 
 describe('MovieTile', () => {
