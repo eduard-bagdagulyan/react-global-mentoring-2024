@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { MovieDetails } from '../components/MovieDetails.tsx'
+import { MovieDetails } from '../components/MovieDetails/MovieDetails.tsx'
 
 describe('MovieDetails', () => {
     it('renders the movie details', () => {
