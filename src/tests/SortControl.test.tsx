@@ -1,4 +1,4 @@
-import SortControl from '../components/SortControl.tsx'
+import SortControl from '../components/SortControl/SortControl.tsx'
 import { fireEvent, render, screen } from '@testing-library/react'
 
 describe('Counter', () => {

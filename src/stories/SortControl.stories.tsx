@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react'
-import SortControl from '../components/SortControl.tsx'
+import SortControl from '../components/SortControl/SortControl.tsx'
 
 const meta: Meta<typeof SortControl> = {
-    title: 'SortControl',
+    title: 'Sort Control',
     component: SortControl,
     parameters: {
         layout: 'centered',

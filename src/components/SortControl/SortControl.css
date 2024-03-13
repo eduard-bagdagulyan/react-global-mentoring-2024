@@ -1,0 +1,15 @@
+.sort-control {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.sort-label {
+    color: #555555;
+}
+
+.sort-select {
+    color: white;
+    position: relative;
+    appearance: none;
+}
