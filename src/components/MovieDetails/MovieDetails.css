@@ -1,0 +1,50 @@
+.movie-details {
+    display: flex;
+    gap: 50px;
+    color: white;
+    font-weight: 300;
+    letter-spacing: 0;
+}
+
+.movie-details-image-wrapper {
+    min-width: 320px;
+}
+
+.movie-details-title-rating-wrapper {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    text-align: center;
+}
+
+.movie-details-title-rating-wrapper h2 {
+    font-size: 40px;
+    line-height: 49px;
+    letter-spacing: 1px;
+}
+
+.movie-details-title-rating-wrapper p {
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    line-height: 24px;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 18px;
+}
+
+.movie-details-year-duration-wrapper {
+    font-size: 24px;
+    line-height: 29px;
+    display: flex;
+    justify-content: left;
+    gap: 50px;
+    margin: 30px 0;
+    color: #F65261;
+}
+
+.movie-details-description-wrapper {
+    font-size: 20px;
+    line-height: 24px;
+    text-align: left;
+}

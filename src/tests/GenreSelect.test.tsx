@@ -1,4 +1,4 @@
-import { GenreSelect } from '../components/GenreSelect'
+import { GenreSelect } from '../components/GenreSelect/GenreSelect.tsx'
 import { render, screen } from '@testing-library/react'
 
 describe('GenreSelect', () => {
@@ -34,7 +34,7 @@ describe('GenreSelect', () => {
             />,
         )
         const selected = screen.getByText(selectedGenre)
-        expect(selected).toHaveStyle('background-color: lightblue')
+        expect(selected).toHaveClass('selected-button')
     })
 
     // Test that after a click event on a genre button component calls "onChange" callback and passes correct genre in arguments

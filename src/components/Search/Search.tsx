@@ -1,4 +1,5 @@
 import { FormEvent } from 'react'
+import './Search.css'
 
 type SearchProps = { initialQuery: string; onSearch: (query: string) => void }
 
@@ -18,14 +19,16 @@ export function Search({ initialQuery, onSearch }: SearchProps) {
 
     return (
         <div>
-            <h1>Search</h1>
-            <form onSubmit={handleSearch}>
+            <form className={'search-bar'} onSubmit={handleSearch}>
                 <input
+                    className={'search-input'}
                     name={'searchInput'}
                     type="text"
                     defaultValue={initialQuery}
                 />
-                <button type="submit">Search</button>
+                <button className={'search-button'} type="submit">
+                    SEARCH
+                </button>
             </form>
         </div>
     )
