@@ -1,6 +1,7 @@
 import { JSX } from 'react'
 import { Portal } from 'react-portal'
 import FocusTrap from 'focus-trap-react'
+import './Dialog.css'
 
 interface DialogProps {
     title: string | JSX.Element
@@ -30,5 +31,3 @@ export function Dialog({ title, children, onClose }: DialogProps) {
         </Portal>
     )
 }
-
-export default Dialog

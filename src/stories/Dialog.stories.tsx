@@ -1,13 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react'
-import Dialog from '../components/Dialog/Dialog.tsx'
+import { Dialog } from '../components/Dialog/Dialog.tsx'
 
 const meta: Meta<typeof Dialog> = {
     title: 'Dialog',
     component: Dialog,
     parameters: {
         layout: 'centered',
+        backgrounds: { default: 'Light' },
     },
-    tags: ['autodocs'],
     argTypes: {
         title: { control: 'text', description: 'Dialog Title' },
         children: { control: 'text', description: 'Dialog Content' },
