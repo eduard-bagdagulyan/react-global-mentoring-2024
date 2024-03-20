@@ -1,6 +1,6 @@
 .dialog-overlay {
     padding: 60px;
-    width: 50vw;
+    min-width: 50vw;
     background-color: #232323;
     font-weight: 300;
     line-height: 49px;

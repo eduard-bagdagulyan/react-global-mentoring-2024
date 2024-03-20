@@ -28,7 +28,7 @@ export function MovieForm({ initialInfo, onSubmit }: MovieFormProps) {
                     <input
                         id={'title'}
                         type={'text'}
-                        value={initialInfo?.title}
+                        defaultValue={initialInfo?.title}
                         placeholder={'Movie Title'}
                     ></input>
                 </div>
@@ -37,8 +37,7 @@ export function MovieForm({ initialInfo, onSubmit }: MovieFormProps) {
                     <input
                         id={'release-date'}
                         type={'date'}
-                        value={initialInfo?.releaseDate}
-                        defaultValue={'Select Date'}
+                        defaultValue={initialInfo?.releaseDate}
                     ></input>
                 </div>
                 <div>
@@ -46,7 +45,7 @@ export function MovieForm({ initialInfo, onSubmit }: MovieFormProps) {
                     <input
                         id={'movie-url'}
                         type={'text'}
-                        value={initialInfo?.movieUrl}
+                        defaultValue={initialInfo?.movieUrl}
                         placeholder={'https://'}
                     ></input>
                 </div>
@@ -55,13 +54,13 @@ export function MovieForm({ initialInfo, onSubmit }: MovieFormProps) {
                     <input
                         id={'rating'}
                         type={'number'}
-                        value={initialInfo?.rating}
+                        defaultValue={initialInfo?.rating}
                         placeholder={'0-10'}
                     ></input>
                 </div>
                 <div>
                     <label htmlFor={'genre'}>GENRE</label>
-                    <select>
+                    <select id={'genre'}>
                         {initialInfo?.genres?.map(genre => (
                             <option key={genre} value={genre}>
                                 {genre}
@@ -74,7 +73,7 @@ export function MovieForm({ initialInfo, onSubmit }: MovieFormProps) {
                     <input
                         id={'runtime'}
                         type={'number'}
-                        value={initialInfo?.runtime}
+                        defaultValue={initialInfo?.runtime}
                         placeholder={'minutes'}
                     ></input>
                 </div>
@@ -82,7 +81,7 @@ export function MovieForm({ initialInfo, onSubmit }: MovieFormProps) {
                     <label htmlFor={'overview'}>OVERVIEW</label>
                     <textarea
                         id={'overview'}
-                        value={initialInfo?.overview}
+                        defaultValue={initialInfo?.overview}
                         placeholder={'Movie Description'}
                     ></textarea>
                 </div>
