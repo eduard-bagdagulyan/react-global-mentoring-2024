@@ -44,7 +44,6 @@ export const EditMovie: Story = {
                     releaseDate: '2022-01-01',
                     movieUrl: 'https://www.youtube.com/watch?v=123',
                     rating: 5,
-                    genres: ['Action', 'Adventure'],
                     runtime: 120,
                     overview: 'This is a movie overview',
                 }}
@@ -57,6 +56,6 @@ export const EditMovie: Story = {
 export const DeleteMovie: Story = {
     args: {
         title: 'Delete Movie',
-        children: <DeleteMovieModal />,
+        children: <DeleteMovieModal onConfirm={() => {}} />,
     },
 }

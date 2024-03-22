@@ -3,9 +3,9 @@ import { Portal } from 'react-portal'
 import FocusTrap from 'focus-trap-react'
 import './Dialog.css'
 
-interface DialogProps {
+type DialogProps = {
     title: string | JSX.Element
-    children: JSX.Element
+    children?: JSX.Element
     onClose: () => void
 }
 

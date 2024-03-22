@@ -1,6 +1,8 @@
 import { render, fireEvent } from '@testing-library/react';
 import SortControl from '../components/SortControl/SortControl';
 
+// jest.mock('../assets/dropdown-arrow.svg?react', () => 'DropdownArrow');
+
 describe('SortControl', () => {
     it('renders without crashing', () => {
         const { getByText } = render(<SortControl currentSelection="Release Date" onSortChange={() => {}} />);

@@ -6,5 +6,6 @@ export default {
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     moduleNameMapper: {
         '\\.(css|scss)$': 'identity-obj-proxy',
+        '\\.(gif|ttf|eot|svg|png)': '<rootDir>/src/tests/mocks/fileMock.js',
     },
 }
