@@ -20,35 +20,25 @@ describe('Dialog', () => {
 
     it('renders without crashing', () => {
         const props = setup()
-        const { container } = render(
-            <Dialog {...props}>
-                <div></div>
-            </Dialog>,
-        )
+        const { container } = render(<Dialog {...props}></Dialog>)
         expect(container).toBeInTheDocument()
     })
 
     it('renders the correct title', () => {
         const props = setup()
-        const { getByText } = render(
-            <Dialog {...props}>{props.children}</Dialog>,
-        )
+        const { getByText } = render(<Dialog {...props}></Dialog>)
         expect(getByText('Test Dialog')).toBeInTheDocument()
     })
 
     it('renders the correct children', () => {
         const props = setup()
-        const { getByText } = render(
-            <Dialog {...props}>{props.children}</Dialog>,
-        )
+        const { getByText } = render(<Dialog {...props}></Dialog>)
         expect(getByText('Test Children')).toBeInTheDocument()
     })
 
     it('calls onClose when the close button is clicked', () => {
         const props = setup()
-        const { getByText } = render(
-            <Dialog {...props}>{props.children}</Dialog>,
-        )
+        const { getByText } = render(<Dialog {...props}></Dialog>)
         fireEvent.click(getByText('×'))
         expect(props.onClose).toHaveBeenCalledTimes(1)
     })
