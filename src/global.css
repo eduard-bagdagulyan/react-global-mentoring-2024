@@ -26,3 +26,16 @@ a, button {
 p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
 }
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+select {
+    -webkit-appearance: none;
+}

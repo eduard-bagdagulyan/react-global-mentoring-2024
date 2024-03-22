@@ -1,0 +1,61 @@
+.movie-form {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    width: 50vw;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 1px;
+    color: #F65261;
+}
+
+.movie-form-overview {
+    grid-column: span 2;
+    margin-top: 10px;
+}
+
+.movie-form input, textarea, select {
+    margin-top: 15px;
+    height: 60px;
+    border-radius: 3px;
+    background: #323232F2;
+    color: white;
+    padding: 20px
+}
+
+.movie-form textarea {
+    resize: none;
+    height: 200px;
+}
+
+.movie-form div {
+    display: flex;
+    flex-direction: column
+}
+
+.movie-form-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 60px;
+}
+
+.movie-form-buttons button {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    border: 1px solid #F65261;
+    border-radius: 3px;
+    width: 180px;
+    padding: 15px 0;
+}
+
+.movie-form-buttons button:first-child {
+    color: #F65261;
+}
+
+.movie-form-buttons button:last-child {
+    color: white;
+    background-color: #F65261;
+}
