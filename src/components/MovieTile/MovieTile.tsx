@@ -1,6 +1,6 @@
 import './MovieTile.css'
 
-type MovieTileProps = {
+export type MovieTileProps = {
     coverUrl: string
     title: string
     year: number
