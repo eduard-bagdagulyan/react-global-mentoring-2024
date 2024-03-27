@@ -1,7 +1,7 @@
 import React from 'react'
 import './SortControl.css'
-import SortOptions from './constants/SortOptions'
 import DropdownArrow from '../../assets/dropdown-arrow.svg?react'
+import { SortOptions } from '../../common/constants/constants.ts'
 
 interface SortControlProps {
     currentSelection: string
@@ -23,9 +23,9 @@ const SortControl: React.FC<SortControlProps> = ({
                 defaultValue={currentSelection}
                 onChange={e => onSortChange(e.target.value)}
             >
-                {SortOptions.map(option => (
-                    <option key={option} value={option}>
-                        {option.toUpperCase()}
+                {Object.entries(SortOptions).map(([key, value]) => (
+                    <option key={key} value={key}>
+                        {value.toUpperCase()}
                     </option>
                 ))}
             </select>
