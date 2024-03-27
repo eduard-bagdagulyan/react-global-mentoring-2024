@@ -1,6 +1,6 @@
 import './MovieDetails.css'
 
-export type MovieDetailsProps = {
+type MovieDetailsProps = {
     coverUrl: string
     title: string
     year: number
