@@ -1,86 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { GenreSelect } from '../GenreSelect/GenreSelect.tsx'
 import SortControl from '../SortControl/SortControl.tsx'
 import { MovieTile } from '../MovieTile/MovieTile.tsx'
 import { Search } from '../Search/Search.tsx'
 import { MovieGenres } from '../../common/constants/constants.ts'
 import './MovieListPage.css'
-import {
-    MovieDetails,
-    MovieDetailsProps,
-} from '../MovieDetails/MovieDetails.tsx'
+import { MovieDetails } from '../MovieDetails/MovieDetails.tsx'
+import { getMovies } from '../../api/Movie.ts'
+import { Movie } from '../../common/interfaces/Movie'
+import { capitalizeFirstLetter } from '../../utils/utils.ts'
 
 const MovieListPage: React.FC = () => {
-    const [searchQuery, setSearchQuery] = useState('What Do You Want To Watch?')
+    const [searchQuery, setSearchQuery] = useState('')
     const [sortCriterion, setSortCriterion] = useState('')
     const [activeGenre, setActiveGenre] = useState('ALL')
-    const [selectedMovie, setSelectedMovie] =
-        useState<MovieDetailsProps | null>()
-    const [movieList] = useState<MovieDetailsProps[]>([
-        {
-            coverUrl: 'https://dummyimage.com/200x300',
-            title: 'Dummy Movie 1',
-            year: 2022,
-            genres: ['Action', 'Adventure'],
-            rating: 8.5,
-            duration: 120,
-            description: 'This is a dummy movie.',
-        },
-        {
-            coverUrl: 'https://dummyimage.com/200x300',
-            title: 'Dummy Movie 2',
-            year: 2021,
-            genres: ['Drama', 'Thriller'],
-            rating: 7.5,
-            duration: 140,
-            description: 'This is another dummy movie.',
-        },
-        {
-            coverUrl: 'https://dummyimage.com/200x300',
-            title: 'Dummy Movie 12',
-            year: 2022,
-            genres: ['Comedy', 'Romance'],
-            rating: 8.0,
-            duration: 110,
-            description: 'This is the twelfth dummy movie.',
-        },
-        {
-            coverUrl: 'https://dummyimage.com/200x300',
-            title: 'Dummy Movie 12',
-            year: 2022,
-            genres: ['Comedy', 'Romance'],
-            rating: 8.0,
-            duration: 110,
-            description: 'This is the twelfth dummy movie.',
-        },
-        {
-            coverUrl: 'https://dummyimage.com/200x300',
-            title: 'Dummy Movie 12',
-            year: 2022,
-            genres: ['Comedy', 'Romance'],
-            rating: 8.0,
-            duration: 110,
-            description: 'This is the twelfth dummy movie.',
-        },
-        {
-            coverUrl: 'https://dummyimage.com/200x300',
-            title: 'Dummy Movie 12',
-            year: 2022,
-            genres: ['Comedy', 'Romance'],
-            rating: 8.0,
-            duration: 110,
-            description: 'This is the twelfth dummy movie.',
-        },
-        {
-            coverUrl: 'https://dummyimage.com/200x300',
-            title: 'Dummy Movie 12',
-            year: 2022,
-            genres: ['Comedy', 'Romance'],
-            rating: 8.0,
-            duration: 110,
-            description: 'This is the twelfth dummy movie.',
-        },
-    ]) // TODO remove
+    const [selectedMovie, setSelectedMovie] = useState<Movie | null>()
+    const [movieList, setMovieList] = useState<Movie[]>([])
+    const genres = ['ALL', ...MovieGenres].map(genre => genre.toUpperCase())
+
+    useEffect(() => {
+        getMovies({
+            search: searchQuery.trim(),
+            sortBy: sortCriterion,
+            searchBy: 'title',
+            sortOrder: 'asc',
+            filter:
+                activeGenre === 'ALL'
+                    ? []
+                    : capitalizeFirstLetter(activeGenre.toLowerCase()),
+        }).then(setMovieList)
+    }, [activeGenre, searchQuery, sortCriterion])
 
     return (
         <div className={'movie-list-page'}>
@@ -102,12 +51,12 @@ const MovieListPage: React.FC = () => {
                         {/* Temporary solution to close MovieDetails, TODO remove */}
                         <MovieDetails
                             title={selectedMovie.title}
-                            year={selectedMovie.year}
-                            coverUrl={selectedMovie.coverUrl}
+                            year={+selectedMovie.release_date.slice(0, 4)}
+                            coverUrl={selectedMovie.poster_path}
                             genres={selectedMovie.genres}
-                            description={selectedMovie.description}
-                            duration={selectedMovie.duration}
-                            rating={selectedMovie.rating}
+                            description={selectedMovie.overview}
+                            duration={selectedMovie.runtime}
+                            rating={selectedMovie.vote_average}
                         />
                     </>
                 ) : (
@@ -130,7 +79,7 @@ const MovieListPage: React.FC = () => {
             </header>
             <div className={'movie-list-page-navbar'}>
                 <GenreSelect
-                    genres={['ALL', ...MovieGenres]}
+                    genres={genres}
                     selectedGenre={activeGenre}
                     onSelect={setActiveGenre}
                 />
@@ -145,12 +94,12 @@ const MovieListPage: React.FC = () => {
                         <strong>{movieList.length}</strong> movies found
                     </div>
                     <div className={'movie-list'}>
-                        {movieList.map((movie: MovieDetailsProps) => (
+                        {movieList.map(movie => (
                             <MovieTile
                                 key={movie.id}
-                                coverUrl={movie.coverUrl}
+                                coverUrl={movie.poster_path}
                                 title={movie.title}
-                                year={movie.year}
+                                year={+movie.release_date.slice(0, 4)}
                                 genres={movie.genres}
                                 cb={() => setSelectedMovie(movie)}
                             />
