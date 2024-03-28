@@ -1,33 +1,35 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { GenreSelect } from '../GenreSelect/GenreSelect.tsx'
 import SortControl from '../SortControl/SortControl.tsx'
 import { MovieTile } from '../MovieTile/MovieTile.tsx'
 import { Search } from '../Search/Search.tsx'
-import { MovieGenres } from '../../common/constants/constants.ts'
+import {
+    MovieGenres,
+    MovieGenresType,
+    SortOptionsType,
+} from '../../common/constants/constants.ts'
 import './MovieListPage.css'
 import { MovieDetails } from '../MovieDetails/MovieDetails.tsx'
-import { getMovies } from '../../api/Movie.ts'
+import { getMovies } from '../../api/movie.ts'
 import { Movie } from '../../common/interfaces/Movie'
-import { capitalizeFirstLetter } from '../../utils/utils.ts'
 
-const MovieListPage: React.FC = () => {
-    const [searchQuery, setSearchQuery] = useState('')
-    const [sortCriterion, setSortCriterion] = useState('')
-    const [activeGenre, setActiveGenre] = useState('ALL')
+export default function MovieListPage() {
+    const [searchQuery, setSearchQuery] = useState<string>('')
+    const [sortCriterion, setSortCriterion] =
+        useState<SortOptionsType>('release_date')
+    const [activeGenre, setActiveGenre] = useState<MovieGenresType>('ALL')
     const [selectedMovie, setSelectedMovie] = useState<Movie | null>()
     const [movieList, setMovieList] = useState<Movie[]>([])
-    const genres = ['ALL', ...MovieGenres].map(genre => genre.toUpperCase())
+    const genres = ['ALL', ...MovieGenres]
 
     useEffect(() => {
         getMovies({
             search: searchQuery.trim(),
             sortBy: sortCriterion,
             searchBy: 'title',
-            sortOrder: 'asc',
-            filter:
-                activeGenre === 'ALL'
-                    ? []
-                    : capitalizeFirstLetter(activeGenre.toLowerCase()),
+            sortOrder: 'desc',
+            filter: activeGenre === 'ALL' ? [] : activeGenre,
+            limit: 12,
         }).then(setMovieList)
     }, [activeGenre, searchQuery, sortCriterion])
 
@@ -115,5 +117,3 @@ const MovieListPage: React.FC = () => {
         </div>
     )
 }
-
-export default MovieListPage

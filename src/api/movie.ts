@@ -1,4 +1,4 @@
-import axios, { CancelTokenSource } from 'axios'
+import axios from 'axios'
 import { Movie } from '../common/interfaces/Movie'
 
 type GetMoviesProps = {
@@ -11,20 +11,28 @@ type GetMoviesProps = {
     limit: number
 }
 
-let cancelTokenSource: CancelTokenSource | null = null;
+let cancelTokenSource: AbortController
 
 export function getMovies(params?: Partial<GetMoviesProps>): Promise<Movie[]> {
     if (cancelTokenSource) {
-        cancelTokenSource.cancel();
+        cancelTokenSource.abort()
     }
 
-    cancelTokenSource = axios.CancelToken.source();
+    cancelTokenSource = new AbortController()
 
     return axios
         .get('http://localhost:4000/movies', {
             params,
-            cancelToken: cancelTokenSource.token
+            signal: cancelTokenSource.signal,
         })
         .then(res => res.data)
         .then(data => data.data)
+        .catch(err => {
+            if (axios.isCancel(err)) {
+                console.log('Request canceled', err.message)
+            } else {
+                console.error(err)
+            }
+            return []
+        })
 }
