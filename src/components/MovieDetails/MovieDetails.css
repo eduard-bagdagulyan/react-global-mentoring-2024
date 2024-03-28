@@ -1,9 +1,11 @@
 .movie-details {
+    background: #232323;
     display: flex;
     gap: 50px;
     color: white;
     font-weight: 300;
     letter-spacing: 0;
+    width: 100%;
 }
 
 .movie-details-image-wrapper {
@@ -26,7 +28,7 @@
 .movie-details-title-rating-wrapper p {
     width: 60px;
     height: 60px;
-    font-size: 20px;
+    font-size: 15px;
     line-height: 24px;
     border: 1px solid white;
     border-radius: 50%;

@@ -1,11 +1,14 @@
 import React from 'react'
 import './SortControl.css'
-import SortOptions from './constants/SortOptions'
 import DropdownArrow from '../../assets/dropdown-arrow.svg?react'
+import {
+    SortOptions,
+    SortOptionsType,
+} from '../../common/constants/constants.ts'
 
 interface SortControlProps {
     currentSelection: string
-    onSortChange: (newSelection: string) => void
+    onSortChange: (newSelection: SortOptionsType) => void
 }
 
 const SortControl: React.FC<SortControlProps> = ({
@@ -21,11 +24,13 @@ const SortControl: React.FC<SortControlProps> = ({
                 id="sort-select"
                 className={'sort-select'}
                 defaultValue={currentSelection}
-                onChange={e => onSortChange(e.target.value)}
+                onChange={e =>
+                    onSortChange(e.currentTarget.value as SortOptionsType)
+                }
             >
-                {SortOptions.map(option => (
-                    <option key={option} value={option}>
-                        {option.toUpperCase()}
+                {Object.entries(SortOptions).map(([key, value]) => (
+                    <option key={key} value={key}>
+                        {value.toUpperCase()}
                     </option>
                 ))}
             </select>

@@ -18,8 +18,8 @@ export function Search({ initialQuery, onSearch }: SearchProps) {
     }
 
     return (
-        <div>
-            <form className={'search-bar'} onSubmit={handleSearch}>
+        <div className={'search-bar'}>
+            <form className={'search-bar-form'} onSubmit={handleSearch}>
                 <input
                     className={'search-input'}
                     name={'searchInput'}
