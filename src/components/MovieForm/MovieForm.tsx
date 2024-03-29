@@ -69,9 +69,9 @@ export function MovieForm({ initialInfo, onSubmit }: MovieFormProps) {
                 <div>
                     <label htmlFor={'genre'}>GENRE</label>
                     <select id={'genre'} name={'genre'}>
-                        {MovieGenres.map(genre => (
-                            <option key={genre} value={genre}>
-                                {genre}
+                        {Object.entries(MovieGenres).map(([key, value]) => (
+                            <option key={key} value={key}>
+                                {value}
                             </option>
                         ))}
                     </select>
