@@ -12,15 +12,28 @@ import './MovieListPage.css'
 import { MovieDetails } from '../MovieDetails/MovieDetails.tsx'
 import { getMovies } from '../../api/movie.ts'
 import { Movie } from '../../common/interfaces/Movie'
+import { useSearchParams } from 'react-router-dom'
 
 export default function MovieListPage() {
-    const [searchQuery, setSearchQuery] = useState<string>('')
-    const [sortCriterion, setSortCriterion] =
-        useState<SortOptionsType>('release_date')
-    const [activeGenre, setActiveGenre] = useState<MovieGenresType>('ALL')
-    const [selectedMovie, setSelectedMovie] = useState<Movie | null>()
+    const [searchParams, setSearchParams] = useSearchParams()
+    const searchQuery = searchParams.get('searchQuery') || ''
+    const sortCriterion = searchParams.get('sortCriterion') || 'release_date'
+    const activeGenre = searchParams.get('activeGenre') || 'ALL'
     const [movieList, setMovieList] = useState<Movie[]>([])
+    const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null)
     const genres = ['ALL', ...MovieGenres]
+
+    const setSearchQuery = (query: string) => {
+        setSearchParams({ ...searchParams, searchQuery: query })
+    }
+
+    const setSortCriterion = (criterion: SortOptionsType) => {
+        setSearchParams({ ...searchParams, sortCriterion: criterion })
+    }
+
+    const setActiveGenre = (genre: MovieGenresType) => {
+        setSearchParams({ ...searchParams, activeGenre: genre })
+    }
 
     useEffect(() => {
         getMovies({
@@ -45,7 +58,6 @@ export default function MovieListPage() {
                             }}
                             onClick={() => {
                                 setSelectedMovie(null)
-                                console.log(selectedMovie)
                             }}
                         >
                             X
