@@ -1,6 +1,7 @@
 import './MovieTile.css'
 
 type MovieTileProps = {
+    id: number
     coverUrl: string
     title: string
     year: number
@@ -9,6 +10,7 @@ type MovieTileProps = {
 }
 
 export function MovieTile({
+    id,
     coverUrl,
     title,
     year,
@@ -16,7 +18,7 @@ export function MovieTile({
     cb,
 }: MovieTileProps) {
     return (
-        <button onClick={cb}>
+        <button onClick={cb} data-id={id}>
             <div className={'movie-tile'}>
                 <img src={coverUrl} alt={title} />
                 <div className={'title-year-wrapper'}>

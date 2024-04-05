@@ -65,6 +65,7 @@ export default function MovieListPage() {
                         {movieList.map(movie => (
                             <MovieTile
                                 key={movie.id}
+                                id={movie.id}
                                 coverUrl={movie.poster_path}
                                 title={movie.title}
                                 year={+movie.release_date.slice(0, 4)}
