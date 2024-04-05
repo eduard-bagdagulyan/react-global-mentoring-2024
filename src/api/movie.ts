@@ -36,3 +36,23 @@ export function getMovies(params?: Partial<GetMoviesProps>): Promise<Movie[]> {
             return []
         })
 }
+
+export function getMovie(id: string): Promise<Movie> {
+    if (cancelTokenSource) {
+        cancelTokenSource.abort()
+    }
+
+    cancelTokenSource = new AbortController()
+
+    return axios
+        .get(`http://localhost:4000/movies/${id}`)
+        .then(res => res.data)
+        .catch(err => {
+            if (axios.isCancel(err)) {
+                console.log('Request canceled', err.message)
+            } else {
+                console.error(err)
+            }
+            return []
+        })
+}
