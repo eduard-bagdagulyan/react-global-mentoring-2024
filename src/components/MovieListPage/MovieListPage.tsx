@@ -15,18 +15,23 @@ import { Outlet, useNavigate, useSearchParams } from 'react-router-dom'
 export default function MovieListPage() {
     const [searchParams, setSearchParams] = useSearchParams()
     const searchQuery = searchParams.get('searchQuery') || ''
-    const sortCriterion = searchParams.get('sortCriterion') || 'release_date'
+    const sortCriterion = (
+        searchParams.get('sortCriterion') || 'release_date'
+    ).toLowerCase()
     const activeGenre = searchParams.get('activeGenre') || 'ALL'
     const [movieList, setMovieList] = useState<Movie[]>([])
     const genres = ['ALL', ...MovieGenres]
     const navigate = useNavigate()
 
     const setSortCriterion = (criterion: SortOptionsType) => {
-        setSearchParams({ ...searchParams, sortCriterion: criterion })
+        const lowerCaseCriterion = criterion.toLowerCase()
+        searchParams.set('sortCriterion', lowerCaseCriterion)
+        setSearchParams(searchParams)
     }
 
     const setActiveGenre = (genre: MovieGenresType) => {
-        setSearchParams({ ...searchParams, activeGenre: genre })
+        searchParams.set('activeGenre', genre)
+        setSearchParams(searchParams)
     }
 
     useEffect(() => {
@@ -70,7 +75,11 @@ export default function MovieListPage() {
                                 title={movie.title}
                                 year={+movie.release_date.slice(0, 4)}
                                 genres={movie.genres}
-                                cb={() => navigate(`/${movie.id}`)}
+                                cb={() =>
+                                    navigate(
+                                        `/${movie.id}?${searchParams.toString()}`,
+                                    )
+                                }
                             />
                         ))}
                     </div>

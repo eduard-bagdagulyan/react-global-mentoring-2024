@@ -25,7 +25,9 @@ const SortControl: React.FC<SortControlProps> = ({
                 className={'sort-select'}
                 defaultValue={currentSelection}
                 onChange={e =>
-                    onSortChange(e.currentTarget.value as SortOptionsType)
+                    onSortChange(
+                        e.currentTarget.value.toLowerCase() as SortOptionsType,
+                    )
                 }
             >
                 {Object.entries(SortOptions).map(([key, value]) => (
