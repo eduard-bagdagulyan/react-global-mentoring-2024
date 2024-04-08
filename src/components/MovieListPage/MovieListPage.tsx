@@ -48,6 +48,12 @@ export default function MovieListPage() {
     return (
         <div className={'movie-list-page'}>
             <header className={'movie-list-page-header'}>
+                <div className={'logo-wrapper'}>
+                    <p className={'logo-text'}>
+                        <strong>netflix</strong>roulette
+                    </p>
+                    <button className={'add-movie'}>+ ADD MOVIE</button>
+                </div>
                 <Outlet />
             </header>
             <div className={'movie-list-page-navbar'}>
