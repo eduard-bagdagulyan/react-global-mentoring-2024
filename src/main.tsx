@@ -6,6 +6,7 @@ import ErrorPage from './ErrorPage/ErrorPage.tsx'
 import { Search } from './components/Search/Search.tsx'
 import MovieDetailsWrapper from './components/MovieDetails/MovieDetailsWrapper.tsx'
 import { getMovie } from './api/movie.ts'
+import 'dotenv/config'
 
 const router = createBrowserRouter([
     {
