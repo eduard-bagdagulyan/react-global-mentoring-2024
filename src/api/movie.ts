@@ -13,46 +13,50 @@ type GetMoviesProps = {
 
 let cancelTokenSource: AbortController
 
-export function getMovies(params?: Partial<GetMoviesProps>): Promise<Movie[]> {
+export async function getMovies(
+    params?: Partial<GetMoviesProps>,
+): Promise<Movie[]> {
     if (cancelTokenSource) {
         cancelTokenSource.abort()
     }
 
     cancelTokenSource = new AbortController()
 
-    return axios
-        .get(`${process.env.API_URL}/movies`, {
+    try {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/movies`, {
             params,
             signal: cancelTokenSource.signal,
         })
-        .then(res => res.data)
-        .then(data => data.data)
-        .catch(err => {
-            if (axios.isCancel(err)) {
-                console.log('Request canceled', err.message)
-            } else {
-                console.error(err)
-            }
-            return []
-        })
+        const data = res.data
+        return data.data
+    } catch (err) {
+        if (axios.isCancel(err)) {
+            console.log('Request canceled', err.message)
+        } else {
+            console.error(err)
+        }
+        return []
+    }
 }
 
-export function getMovie(id: string): Promise<Movie> {
+export async function getMovie(id: string): Promise<Movie> {
     if (cancelTokenSource) {
         cancelTokenSource.abort()
     }
 
     cancelTokenSource = new AbortController()
 
-    return axios
-        .get(`${process.env.API_URL}/movies/${id}`)
-        .then(res => res.data)
-        .catch(err => {
-            if (axios.isCancel(err)) {
-                console.log('Request canceled', err.message)
-            } else {
-                console.error(err)
-            }
-            return []
-        })
+    try {
+        const res = await axios.get(
+            `${import.meta.env.VITE_API_URL}/movies/${id}`,
+        )
+        return res.data
+    } catch (err) {
+        if (axios.isCancel(err)) {
+            console.log('Request canceled', err.message)
+        } else {
+            console.error(err)
+        }
+        return {} as Movie
+    }
 }

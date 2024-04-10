@@ -1,6 +1,6 @@
 describe('Movie List Page', () => {
     beforeEach(() => {
-        cy.visit(`http://localhost:${process.env.APP_PORT || 3000}`)
+        cy.visit(`/`)
     })
 
     it('performs a complete user flow', () => {
