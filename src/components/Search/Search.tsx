@@ -1,7 +1,6 @@
 import { FormEvent } from 'react'
 import './Search.css'
-
-type SearchProps = { initialQuery: string; onSearch: (query: string) => void }
+import { useSearchParams } from 'react-router-dom'
 
 interface FormElements extends HTMLFormControlsCollection {
     searchInput: HTMLInputElement
@@ -11,10 +10,17 @@ interface SearchFormElement extends HTMLFormElement {
     readonly elements: FormElements
 }
 
-export function Search({ initialQuery, onSearch }: SearchProps) {
+export function Search() {
+    const [searchParams, setSearchParams] = useSearchParams()
+    const searchQuery = searchParams.get('searchQuery') || ''
+
     function handleSearch(event: FormEvent<SearchFormElement>) {
         event.preventDefault()
-        onSearch(event.currentTarget.elements.searchInput.value)
+        searchParams.set(
+            'searchQuery',
+            event.currentTarget.elements.searchInput.value,
+        )
+        setSearchParams(searchParams)
     }
 
     return (
@@ -24,7 +30,7 @@ export function Search({ initialQuery, onSearch }: SearchProps) {
                     className={'search-input'}
                     name={'searchInput'}
                     type="text"
-                    defaultValue={initialQuery}
+                    defaultValue={searchQuery}
                 />
                 <button className={'search-button'} type="submit">
                     SEARCH

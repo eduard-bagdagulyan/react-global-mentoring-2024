@@ -15,7 +15,7 @@ export function GenreSelect({
         <div className={'genre-select'}>
             {genres.map(genre => (
                 <button
-                    className={`genre-select-button ${selectedGenre === genre ? 'selected-button' : ''}`}
+                    className={`genre-select-button ${selectedGenre.toLowerCase() === genre.toLowerCase() ? 'selected-button' : ''}`}
                     key={genre}
                     onClick={() => onSelect(genre)}
                 >
